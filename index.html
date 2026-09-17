@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A simple personal homepage.">
-  <title>Welcome</title>
+  <meta name="description" content="Alice Zhu 的個人網站 — Babson College Class of 2028，Varsity Golf，熱愛旅行、烘焙與音樂。">
+  <title>Alice Zhu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #18211f;
-      --muted: #64716c;
-      --paper: #f5f4ee;
-      --surface: rgba(255, 255, 255, 0.72);
-      --accent: #e36a43;
-      --accent-dark: #b64b2c;
-      --line: rgba(24, 33, 31, 0.12);
-      --shadow: 0 24px 60px rgba(48, 58, 52, 0.12);
+      --ink: #2b3a45;
+      --muted: #6c7f8c;
+      --paper: #f6fbfe;
+      --surface: rgba(255, 255, 255, 0.8);
+      --accent: #6bc4ea;
+      --accent-deep: #2f8fb8;
+      --accent-soft: #d9f0fa;
+      --tape: #ffe0c2;
+      --tape-2: #ffd3e6;
+      --line: rgba(43, 58, 69, 0.18);
+      --shadow: 0 26px 55px rgba(107, 196, 234, 0.24);
     }
 
     * { box-sizing: border-box; }
@@ -28,17 +31,19 @@
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 85% 8%, rgba(227, 106, 67, 0.16), transparent 27rem),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.45), transparent 48%),
+        radial-gradient(circle at 88% 6%, rgba(107, 196, 234, 0.24), transparent 26rem),
+        radial-gradient(circle at 6% 92%, rgba(255, 211, 230, 0.28), transparent 28rem),
+        radial-gradient(rgba(107, 196, 234, 0.14) 1.4px, transparent 1.4px),
         var(--paper);
+      background-size: auto, auto, 22px 22px, auto;
       font-family: "DM Sans", sans-serif;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     a { color: inherit; text-decoration: none; }
 
     .page-shell {
-      width: min(1120px, calc(100% - 40px));
+      width: min(1080px, calc(100% - 40px));
       margin: 0 auto;
     }
 
@@ -46,149 +51,233 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 0;
+      padding: 30px 0;
     }
 
     .logo {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.15rem;
+      font-family: "Caveat", cursive;
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      color: var(--accent-deep);
     }
-
-    .logo-mark { color: var(--accent); }
 
     .nav {
       display: flex;
-      gap: 28px;
+      gap: 26px;
       color: var(--muted);
       font-size: 0.92rem;
     }
 
-    .nav a { transition: color 180ms ease; }
-    .nav a:hover, .nav a:focus-visible { color: var(--accent-dark); }
+    .nav a { position: relative; transition: color 180ms ease; }
+    .nav a::after {
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--accent);
+      content: "";
+      transition: width 180ms ease;
+    }
+    .nav a:hover, .nav a:focus-visible { color: var(--accent-deep); }
+    .nav a:hover::after, .nav a:focus-visible::after { width: 100%; }
 
     .hero {
-      min-height: 590px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       align-items: center;
-      gap: 72px;
-      padding: 72px 0 110px;
+      gap: 60px;
+      padding: 44px 0 96px;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin: 0 0 20px;
-      color: var(--accent-dark);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      margin: 0 0 6px;
+      color: var(--accent-deep);
+      font-family: "Caveat", cursive;
+      font-size: 1.5rem;
+      font-weight: 600;
     }
 
-    .eyebrow::before {
-      width: 26px;
-      height: 2px;
-      background: var(--accent);
-      content: "";
-    }
-
-    h1, h2 { font-family: "Space Grotesk", sans-serif; line-height: 1.05; }
+    h1, h2, h3 { font-family: "Fraunces", serif; line-height: 1.12; }
 
     h1 {
-      max-width: 650px;
+      max-width: 620px;
       margin: 0;
-      font-size: clamp(3.5rem, 8vw, 6.5rem);
-      letter-spacing: -0.06em;
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
     }
+
+    h1 em { color: var(--accent-deep); font-style: italic; }
 
     .hero-copy {
       max-width: 500px;
-      margin: 28px 0 32px;
+      margin: 22px 0 30px;
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1.08rem;
     }
 
-    .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
 
-    .button {
+    .btn-ghost {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 1px solid var(--ink);
+      min-height: 46px;
+      padding: 0 24px;
+      border: 2px dashed var(--accent-deep);
       border-radius: 999px;
-      font-size: 0.92rem;
-      font-weight: 700;
+      color: var(--accent-deep);
+      font-size: 0.95rem;
+      font-weight: 600;
       transition: transform 180ms ease, background 180ms ease, color 180ms ease;
     }
+    .btn-ghost:hover, .btn-ghost:focus-visible { background: var(--accent-deep); color: #fff; transform: translateY(-2px) rotate(-1deg); }
 
-    .button:hover, .button:focus-visible { transform: translateY(-2px); }
-    .button-primary { border-color: var(--accent); background: var(--accent); color: #fff; }
-    .button-primary:hover, .button-primary:focus-visible { background: var(--accent-dark); }
-    .button-secondary { background: rgba(255, 255, 255, 0.34); }
+    .link-arrow { font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; transition: color 180ms ease, border-color 180ms ease; }
+    .link-arrow:hover, .link-arrow:focus-visible { color: var(--accent-deep); border-color: var(--accent-deep); }
 
-    .hero-art {
+    .polaroid {
       position: relative;
-      min-height: 380px;
-      border: 1px solid rgba(24, 33, 31, 0.08);
-      border-radius: 38% 62% 54% 46% / 45% 44% 56% 55%;
-      background: linear-gradient(145deg, #e6a37f, #e8794d 52%, #c44e31);
+      width: min(320px, 100%);
+      margin: 0 auto;
+      padding: 14px 14px 44px;
+      background: #fff;
+      border-radius: 4px;
       box-shadow: var(--shadow);
-      transform: rotate(5deg);
+      transform: rotate(-4deg);
     }
 
-    .hero-art::before, .hero-art::after {
+    .polaroid-photo {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--accent-soft);
+    }
+
+    .polaroid-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .polaroid-caption {
       position: absolute;
-      border: 1px solid rgba(255, 255, 255, 0.45);
+      left: 0;
+      right: 0;
+      bottom: 8px;
+      margin: 0;
+      text-align: center;
+      font-family: "Caveat", cursive;
+      font-size: 1.35rem;
+      color: var(--accent-deep);
+    }
+
+    .tape {
+      position: absolute;
+      width: 64px;
+      height: 24px;
+      background: var(--tape);
+      opacity: 0.85;
+      box-shadow: 0 3px 6px rgba(43, 58, 69, 0.12);
+    }
+    .tape-a { top: -12px; left: -18px; transform: rotate(-40deg); }
+    .tape-b { bottom: 26px; right: -20px; background: var(--tape-2); transform: rotate(35deg); }
+
+    section.block { padding: 64px 0; }
+
+    .section-head { max-width: 600px; margin: 0 0 38px; }
+    .section-head .eyebrow { display: block; }
+    .section-head h2 { font-size: clamp(1.9rem, 3.5vw, 2.5rem); margin: 4px 0 8px; font-weight: 500; }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .timeline {
+      position: relative;
+      margin-left: 8px;
+      padding-left: 26px;
+      border-left: 2px dashed var(--accent);
+    }
+
+    .timeline-item { position: relative; padding-bottom: 34px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      position: absolute;
+      top: 4px;
+      left: -33px;
+      width: 12px;
+      height: 12px;
+      border: 3px solid var(--paper);
       border-radius: 50%;
+      background: var(--accent-deep);
       content: "";
     }
 
-    .hero-art::before { inset: 15% 12%; }
-    .hero-art::after { inset: 29% 25%; background: rgba(255, 255, 255, 0.12); }
+    .timeline-year {
+      display: block;
+      margin-bottom: 4px;
+      font-family: "Caveat", cursive;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent-deep);
+    }
+
+    .timeline-item h3 { margin: 0 0 6px; font-size: 1.2rem; font-weight: 500; }
+    .timeline-item p { margin: 0; max-width: 560px; color: var(--muted); font-size: 0.96rem; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
+      padding: 5px 14px;
+      border: 1px dashed var(--accent-deep);
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
 
     .feature-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      padding: 22px 0 80px;
-      border-top: 1px solid var(--line);
+      gap: 22px;
     }
 
     .feature {
-      padding: 20px 22px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      padding: 26px 22px;
+      border: 1px dashed var(--line);
+      border-radius: 18px;
       background: var(--surface);
+      transition: transform 200ms ease, box-shadow 200ms ease;
     }
+    .feature:nth-child(1) { transform: rotate(-2deg); }
+    .feature:nth-child(2) { transform: rotate(1.5deg); }
+    .feature:nth-child(3) { transform: rotate(-1deg); }
+    .feature:hover { transform: rotate(0deg) translateY(-4px); box-shadow: var(--shadow); }
 
-    .feature-number { color: var(--accent); font-weight: 700; }
-    .feature h2 { margin: 16px 0 8px; font-size: 1.3rem; }
+    .feature-icon { font-size: 1.7rem; }
+    .feature h3 { margin: 14px 0 8px; font-size: 1.2rem; font-weight: 500; }
     .feature p { margin: 0; color: var(--muted); font-size: 0.94rem; }
 
     .site-footer {
       display: flex;
       justify-content: space-between;
-      padding: 24px 0 32px;
-      border-top: 1px solid var(--line);
+      align-items: center;
+      padding: 28px 0 40px;
+      border-top: 2px dashed var(--line);
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
+    .site-footer .signature { font-family: "Caveat", cursive; font-size: 1.3rem; color: var(--accent-deep); }
 
     @media (max-width: 760px) {
       .page-shell { width: min(100% - 32px, 600px); }
-      .site-header { padding: 22px 0; }
+      .site-header { padding: 24px 0; }
       .nav { gap: 16px; }
-      .hero { grid-template-columns: 1fr; gap: 38px; padding: 64px 0 72px; }
-      h1 { font-size: clamp(3.4rem, 17vw, 5.5rem); }
-      .hero-art { min-height: 260px; transform: rotate(3deg); }
-      .feature-strip { grid-template-columns: 1fr; padding-bottom: 56px; }
-      .site-footer { flex-direction: column; gap: 6px; }
+      .hero { grid-template-columns: 1fr; gap: 44px; padding: 36px 0 64px; text-align: center; }
+      .hero-copy { margin-inline: auto; }
+      .actions { justify-content: center; }
+      .polaroid { transform: rotate(-2deg); }
+      .timeline { margin-left: 2px; }
+      .feature-strip { grid-template-columns: 1fr; }
+      .feature { transform: none !important; }
+      .site-footer { flex-direction: column; gap: 8px; text-align: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -200,9 +289,12 @@
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="logo" href="/" aria-label="Homepage">your<span class="logo-mark">.</span>space</a>
+      <a class="logo" href="/" aria-label="Homepage">Alice ✿</a>
       <nav class="nav" aria-label="Main navigation">
         <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#athletics">Athletics</a>
+        <a href="#hobbies">Hobbies</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -210,39 +302,98 @@
     <main>
       <section class="hero" id="about">
         <div>
-          <p class="eyebrow">A place to begin</p>
-          <h1>Hello, and welcome.</h1>
-          <p class="hero-copy">This is a simple home for ideas, projects, and the things worth sharing. More details are on the way.</p>
+          <p class="eyebrow">welcome to my little corner of the internet ✿</p>
+          <h1>Hi, I'm <em>Alice Zhu</em>.</h1>
+          <p class="hero-copy">Beijing-born, Babson-bound — Class of 2028, varsity golfer, and Business Analytics major in progress. When I'm not on the course, I'm probably traveling, baking, or lost in a playlist.</p>
           <div class="actions">
-            <a class="button button-primary" href="#contact">Get in touch</a>
-            <a class="button button-secondary" href="#explore">Explore below</a>
+            <a class="btn-ghost" href="#education">my story ↓</a>
+            <a class="link-arrow" href="#contact">say hello →</a>
           </div>
         </div>
-        <div class="hero-art" aria-hidden="true"></div>
+        <div class="polaroid">
+          <div class="polaroid-photo">
+            <img src="assets/profile.jpg" alt="Alice Zhu">
+          </div>
+          <p class="polaroid-caption">that's me ☁</p>
+          <span class="tape tape-a"></span>
+          <span class="tape tape-b"></span>
+        </div>
       </section>
 
-      <section class="feature-strip" id="explore" aria-label="What to expect">
-        <article class="feature">
-          <span class="feature-number">01</span>
-          <h2>Ideas</h2>
-          <p>A growing collection of thoughts, notes, and observations.</p>
-        </article>
-        <article class="feature">
-          <span class="feature-number">02</span>
-          <h2>Projects</h2>
-          <p>A closer look at work in progress and things already made.</p>
-        </article>
-        <article class="feature">
-          <span class="feature-number">03</span>
-          <h2>Updates</h2>
-          <p>New stories and useful details will find their way here soon.</p>
-        </article>
+      <section class="block" id="education">
+        <div class="section-head">
+          <span class="eyebrow">chapter one</span>
+          <h2>Education</h2>
+          <p>From the Florida sunshine to the Babson campus.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-year">2024 – present</span>
+            <h3>Babson College</h3>
+            <p>Class of 2028, majoring in Business Analytics. Balancing coursework with varsity athletics and campus life.</p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-year">high school</span>
+            <h3>Orlando, Florida</h3>
+            <p>Finished growing up and graduated high school in Orlando, where sunshine and golf courses shaped a lot of my teenage years.</p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-year">childhood</span>
+            <h3>Beijing, China</h3>
+            <p>Born and raised in Beijing until 6th grade, when I moved to the U.S. to continue my schooling.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="athletics">
+        <div class="section-head">
+          <span class="eyebrow">chapter two</span>
+          <h2>Varsity Golf</h2>
+          <p>Competing for Babson College as part of the varsity golf team.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-year">on the team</span>
+            <h3>Babson Varsity Golf</h3>
+            <p>Training, competing, and growing as a student-athlete while pursuing my degree.</p>
+            <div class="tag-row">
+              <span class="tag">discipline</span>
+              <span class="tag">teamwork</span>
+              <span class="tag">time management</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="hobbies">
+        <div class="section-head">
+          <span class="eyebrow">the little things</span>
+          <h2>Beyond the classroom</h2>
+          <p>A few things that keep me inspired and recharged.</p>
+        </div>
+        <div class="feature-strip">
+          <article class="feature">
+            <span class="feature-icon">✈️</span>
+            <h3>Traveling</h3>
+            <p>Exploring new cities, cultures, and cuisines whenever I get the chance.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">🧁</span>
+            <h3>Baking</h3>
+            <p>Experimenting in the kitchen, from cookies to layered cakes.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">🎧</span>
+            <h3>Music</h3>
+            <p>Always have a playlist running, whether studying, baking, or on the road.</p>
+          </article>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer" id="contact">
-      <span>Built with intention.</span>
-      <span>More to come.</span>
+      <span class="signature">Alice Zhu, Babson '28</span>
+      <span>thanks for stopping by ☁</span>
     </footer>
   </div>
 </body>
